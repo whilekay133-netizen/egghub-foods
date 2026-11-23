@@ -2,7 +2,7 @@
 
 Fresh eggs. Healthy living.
 
-Static one-page website for **Egghub Foods** — farm-fresh eggs at the lowest possible prices, bulk supply up to 1,000 crates weekly.
+Static one-page website for **Egghub Foods** — farm-fresh eggs. Big eggs ₦5,200 and medium eggs ₦4,800 per crate; bulk supply up to 1,000 crates weekly.
 
 - Address: KM 1, Lotto-Simawa Road, Lotto Bus-Stop, Mowe, Ogun State
 - WhatsApp / Phone: +234 806 913 3358
