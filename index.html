@@ -420,16 +420,13 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
   .e1{left:70%}
 }
 
-.contact-row{display:grid;grid-template-columns:1fr 1fr 1.35fr 1fr 1fr;gap:12px;margin-top:16px}
-.cc{display:flex;align-items:center;gap:12px;background:#fff;border:1px solid var(--line);border-radius:20px;padding:16px;transition:transform .2s,border-color .2s,box-shadow .2s;min-width:0}
-.cc:hover{transform:translateY(-3px);border-color:var(--blue);box-shadow:0 14px 30px rgba(31,44,212,.1)}
-.cc svg{width:40px;height:40px;padding:10px;border-radius:12px;background:var(--surface-2);color:var(--blue);flex:none}
-.cc:first-child svg{background:#E3F9EC;color:#16A34A}
-.cc span{min-width:0}
-.cc small{display:block;font-size:12px;color:var(--muted)}
-.cc b{display:block;font-size:14px;font-weight:600;overflow-wrap:anywhere}
-@media (max-width:1080px){.contact-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media (max-width:640px){.contact-row{grid-template-columns:1fr}}
+.contact-row{display:flex;justify-content:center;flex-wrap:wrap;gap:16px;margin-top:28px}
+.cc{width:60px;height:60px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;box-shadow:0 10px 24px rgba(13,17,38,.15);transition:transform .2s,box-shadow .2s}
+.cc:hover{transform:translateY(-4px) scale(1.05);box-shadow:0 16px 30px rgba(13,17,38,.22)}
+.cc svg{width:26px;height:26px}
+.wa-c{background:#25D366}.call-c{background:var(--blue)}.mail-c{background:#EA4335}.fb-c{background:#1877F2}
+.ig-c{background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285AEB 90%)}
+@media (max-width:480px){.contact-row{gap:10px;flex-wrap:nowrap}.cc{width:50px;height:50px}.cc svg{width:22px;height:22px}}
 
 /* ===== small-phone + iOS safeguards ===== */
 .order-wrap>*,.hero-grid>*,.bulk>*,.story>*,.cta>*,.price-grid>*{min-width:0}
@@ -700,11 +697,11 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
       <div class="cta-img"><img src="images/founder-tray.jpg" alt="Egghub Foods founder holding a tray of fresh eggs" loading="lazy"></div>
     </div>
       <div class="contact-row">
-        <a class="cc" href="#" data-wa="Hello Egghub Foods, I want to order eggs."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5.1A8.4 8.4 0 1 1 21 11.5z"/></svg><span><small>WhatsApp</small><b>0806 913 3358</b></span></a>
-        <a class="cc" href="tel:+2348069133358"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg><span><small>Call us</small><b>0806 913 3358</b></span></a>
-        <a class="cc" href="mailto:egghubfoods@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg><span><small>Email</small><b>egghubfoods@gmail.com</b></span></a>
-        <a class="cc" href="https://www.facebook.com/profile.php?id=61586224568829" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg><span><small>Facebook</small><b>Egghub Foods</b></span></a>
-        <a class="cc" href="https://www.instagram.com/egghubfoods" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg><span><small>Instagram</small><b>@egghubfoods</b></span></a>
+        <a class="cc wa-c" aria-label="Chat with Egghub Foods on WhatsApp" title="Chat with Egghub Foods on WhatsApp" href="#" data-wa="Hello Egghub Foods, I want to order eggs."><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5.1A8.4 8.4 0 1 1 21 11.5z"/></svg></a>
+        <a class="cc call-c" aria-label="Call Egghub Foods on 0806 913 3358" title="Call Egghub Foods on 0806 913 3358" href="tel:+2348069133358"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></a>
+        <a class="cc mail-c" aria-label="Email egghubfoods@gmail.com" title="Email egghubfoods@gmail.com" href="mailto:egghubfoods@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg></a>
+        <a class="cc fb-c" aria-label="Egghub Foods on Facebook" title="Egghub Foods on Facebook" href="https://www.facebook.com/profile.php?id=61586224568829" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+        <a class="cc ig-c" aria-label="Egghub Foods on Instagram" title="Egghub Foods on Instagram" href="https://www.instagram.com/egghubfoods" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></a>
       </div>
   </div>
 </section>
