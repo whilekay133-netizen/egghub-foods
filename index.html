@@ -21,6 +21,7 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
 body{margin:0;font-family:var(--body);color:var(--navy);background:var(--cream);line-height:1.6;-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit}
@@ -61,7 +62,7 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 /* HERO */
 .hero{background:var(--blue);color:#fff;overflow:hidden;position:relative}
 .hero::before{content:"";position:absolute;width:700px;height:700px;border-radius:50%;border:2px solid rgba(255,255,255,.08);right:-200px;top:-200px}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:72px 0 104px}
+.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding-top:72px;padding-bottom:104px}
 .pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);padding:8px 16px;border-radius:999px;font-size:14px;font-weight:600}
 .dot{width:8px;height:8px;border-radius:50%;background:var(--yolk);box-shadow:0 0 0 4px rgba(255,199,44,.25);animation:pulse 2s infinite}
 @keyframes pulse{50%{box-shadow:0 0 0 9px rgba(255,199,44,0)}}
@@ -84,7 +85,7 @@ nav{display:flex;align-items:center;justify-content:space-between;gap:16px;paddi
 .seal small{font-family:var(--body);font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-top:4px}
 @keyframes bob{50%{transform:translateY(-12px)}}
 @keyframes spin{0%,100%{transform:rotate(12deg)}50%{transform:rotate(-6deg)}}
-@media (max-width:900px){.hero-grid{grid-template-columns:1fr;padding:48px 0 80px}.fb1{left:0}.fb2{right:0}}
+@media (max-width:900px){.hero-grid{grid-template-columns:1fr;padding-top:48px;padding-bottom:80px}.fb1{left:0}.fb2{right:0}.seal{width:92px;height:92px;font-size:15px}}
 
 /* MARQUEE */
 .marquee{background:var(--yolk);border-block:3px solid var(--navy);overflow:hidden;padding:14px 0}
@@ -432,10 +433,10 @@ footer{background:var(--navy);color:#fff;padding:60px 0 36px}
     <span class="eyebrow">From our farm and store</span>
     <h2 style="font-size:clamp(36px,4.6vw,56px);margin-top:12px">Fresh from the hub.</h2>
     <div class="gallery">
-      <figure class="g-big reveal"><img src="images/warehouse.jpg" alt="Rows of egg crates stacked at the supply farm" loading="lazy"><figcaption>1,000 crates weekly</figcaption></figure>
-      <figure class="reveal"><img src="images/owner-closeup.jpg" alt="Smiling Egghub Foods team member in a branded cap" loading="lazy"><figcaption>Service with a smile</figcaption></figure>
-      <figure class="reveal"><img src="images/crates.jpg" alt="Stacks of crates of brown eggs" loading="lazy"><figcaption>Ready to go</figcaption></figure>
-      <figure class="g-wide reveal"><img src="images/trays.jpg" alt="New blue egg trays wrapped and ready for packing" loading="lazy"><figcaption>Packed with care</figcaption></figure>
+      <figure class="g-big reveal"><img src="images/warehouse.jpg" alt="Rows of egg crates stacked at the supply farm"><figcaption>1,000 crates weekly</figcaption></figure>
+      <figure class="reveal"><img src="images/owner-closeup.jpg" alt="Smiling Egghub Foods team member in a branded cap"><figcaption>Service with a smile</figcaption></figure>
+      <figure class="reveal"><img src="images/crates.jpg" alt="Stacks of crates of brown eggs"><figcaption>Ready to go</figcaption></figure>
+      <figure class="g-wide reveal"><img src="images/trays.jpg" alt="New blue egg trays wrapped and ready for packing"><figcaption>Packed with care</figcaption></figure>
     </div>
   </div>
 </section>
@@ -483,10 +484,10 @@ footer{background:var(--navy);color:#fff;padding:60px 0 36px}
     <div class="cards reveal">
       <a class="ccard" href="https://wa.me/2348069133358" target="_blank" rel="noopener"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A23B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5.1A8.4 8.4 0 1 1 21 11.5z"/></svg></span><span><small>WhatsApp</small><b>+234 806 913 3358</b></span></a>
       <a class="ccard" href="tel:+2348069133358"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A23B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.4 1.8.7 2.7a2 2 0 0 1-.5 2.1L8 9.8a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.5c.9.3 1.8.6 2.7.7a2 2 0 0 1 1.7 2z"/></svg></span><span><small>Call</small><b>+234 806 913 3358</b></span></a>
-      <a class="ccard" href="mailto:egghubfoods@gmail.com"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A23B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM22 6l-10 7L2 6"/></svg></span><span><small>Email</small><b>egghubfoods@gmail.com</b></span></a>
+      <a class="ccard wide" href="mailto:egghubfoods@gmail.com"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A23B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16v16H4zM22 6l-10 7L2 6"/></svg></span><span><small>Email</small><b>egghubfoods@gmail.com</b></span></a>
       <a class="ccard" href="https://www.instagram.com/egghubfoods" target="_blank" rel="noopener"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A23B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></svg></span><span><small>Instagram</small><b>@egghubfoods</b></span></a>
       <a class="ccard" href="https://www.facebook.com/profile.php?id=61586224568829" target="_blank" rel="noopener"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A23B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span><span><small>Facebook</small><b>Egghub Foods</b></span></a>
-      <a class="ccard" href="https://www.google.com/maps/search/?api=1&query=Lotto%20Bus%20Stop%2C%20Lotto-Simawa%20Road%2C%20Mowe%2C%20Ogun%20State" target="_blank" rel="noopener"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A23B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><small>Visit us</small><b>KM 1, Lotto-Simawa Road, Lotto Bus-Stop, Mowe, Ogun State</b></span></a>
+      <a class="ccard wide" href="https://www.google.com/maps/search/?api=1&query=Lotto%20Bus%20Stop%2C%20Lotto-Simawa%20Road%2C%20Mowe%2C%20Ogun%20State" target="_blank" rel="noopener"><span class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#1A23B8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><small>Visit us</small><b>KM 1, Lotto-Simawa Road, Lotto Bus-Stop, Mowe, Ogun State</b></span></a>
     </div>
   </div>
 </section>
