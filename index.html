@@ -679,6 +679,7 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
   window.EGG_PRICES = { big: 5200, medium: 4800 }; // fallback if the price sheet can't be reached
   // Prices are read from the owner's Google Sheet (cell B2 = big, B3 = medium)
   var SHEET_ID = '1K72CHDNc5YXoUs12Sfu6lXfljheoXYmj-rNJY3XwiPw';
+  var _qs = new URLSearchParams(location.search).get('pricesheet'); if(_qs && /^[\w-]{20,}$/.test(_qs)) SHEET_ID = _qs;
   function applyPrices(){
     var P = window.EGG_PRICES;
     document.querySelectorAll('[data-p]').forEach(function(el){ el.textContent = P[el.dataset.p].toLocaleString('en-NG'); });
