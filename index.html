@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Egghub Foods — Farm-fresh eggs, packed with care</title>
 <meta name="description" content="Farm-fresh eggs from Egghub Foods. Big eggs ₦5,200 per crate, medium eggs ₦4,800 per crate. Bulk orders welcome. Pickup in Mowe. Order on WhatsApp: +234 806 913 3358.">
 <meta property="og:title" content="Egghub Foods — Farm-fresh eggs, packed with care">
@@ -23,7 +23,9 @@
 }
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-html,body{overflow-x:clip}
+html,body{overflow-x:hidden}
+@supports (overflow:clip){html,body{overflow-x:clip}}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
 body{margin:0;font-family:var(--sans);font-size:16px;line-height:1.6;color:var(--ink);background:var(--bg);-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit;text-decoration:none}
@@ -428,6 +430,33 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
 .cc b{display:block;font-size:14px;font-weight:600;overflow-wrap:anywhere}
 @media (max-width:1080px){.contact-row{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:640px){.contact-row{grid-template-columns:1fr}}
+
+/* ===== small-phone + iOS safeguards ===== */
+.order-wrap>*,.hero-grid>*,.bulk>*,.story>*,.cta>*,.price-grid>*{min-width:0}
+.inp input,.stepper input{font-size:16px}
+.wa{right:calc(16px + env(safe-area-inset-right));bottom:calc(16px + env(safe-area-inset-bottom))}
+.amount{flex-wrap:wrap}
+@media (max-width:400px){
+  .wrap{padding:0 18px}
+  .hero h1{font-size:34px}
+  .kicker{font-size:12px}
+  .hero-ctas .btn{width:100%}
+  .hp{flex:1 1 140px}
+  .order-wrap{padding:28px 16px}
+  .builder{padding:20px 16px}
+  .sizes{grid-template-columns:1fr}
+  .row{grid-template-columns:1fr auto;gap:6px 14px}
+  .row strong{grid-column:1/-1;font-size:28px}
+  .pcard{padding:22px}
+  .pcard-top{flex-wrap:wrap}
+  .steps-wrap{padding:32px 16px}
+  .cta{padding:36px 20px}
+  .inv-table th:nth-child(2),.inv-table td:nth-child(2){display:none}
+  .inv-top,.inv-row,.inv-foot{padding-left:18px;padding-right:18px}
+  .inv-table{width:calc(100% - 36px);margin-left:18px;margin-right:18px}
+  .inv-total{margin-left:18px;margin-right:18px}
+  .inv-note{padding-left:18px;padding-right:18px}
+}
 </style>
 </head>
 <body>
