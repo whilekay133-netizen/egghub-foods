@@ -122,8 +122,9 @@ nav{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:ce
 .tagpill.soft{background:var(--surface);color:var(--ink-2)}
 .amount{display:flex;align-items:baseline;gap:8px}
 .amount strong{font-size:clamp(52px,6vw,72px);font-weight:500;letter-spacing:-.04em;line-height:1}
-.amount span{font-size:15px;color:var(--muted)}
-.pcard.featured .amount span{color:#D3D7FF}
+.amount>span{font-size:15px;color:var(--muted)}
+[data-p]{font:inherit;color:inherit;letter-spacing:inherit}
+.pcard.featured .amount>span{color:#D3D7FF}
 .pcard ul{list-style:none;margin:0;padding:0;display:grid;gap:12px;font-size:15px;color:var(--ink-2)}
 .pcard li{display:flex;gap:10px;align-items:center}
 .pcard li svg{flex:none;width:18px;height:18px;color:var(--blue)}
