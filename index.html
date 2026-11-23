@@ -346,6 +346,77 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
 .d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 :focus-visible{outline:2px solid var(--blue);outline-offset:3px}
+
+/* ===== hero v3 ===== */
+.hero{position:relative;overflow:hidden;padding:56px 0 0;background:linear-gradient(180deg,#F4EEFC 0%,#FBF8FF 55%,#fff 100%)}
+.hero-bg{position:absolute;inset:0;pointer-events:none}
+.blob{position:absolute;border-radius:50%;filter:blur(60px);opacity:.55}
+.b1{width:520px;height:520px;background:#D9C8F7;right:-120px;top:-160px}
+.b2{width:380px;height:380px;background:#FFE3A1;left:-140px;bottom:40px;opacity:.45}
+.fegg{position:absolute;color:#fff;filter:drop-shadow(0 10px 18px rgba(120,80,200,.18));animation:floaty 7s ease-in-out infinite}
+.fegg svg{width:100%;height:100%}
+.e1{width:34px;height:42px;left:46%;top:70px;color:#F3D3B0}
+.e2{width:22px;height:28px;left:4%;top:30px;animation-delay:-2s;color:#fff}
+.e3{width:28px;height:35px;left:40%;bottom:120px;animation-delay:-4s;color:#FFD877}
+@keyframes floaty{50%{transform:translateY(-14px) rotate(8deg)}}
+.hero-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;padding-top:24px;padding-bottom:72px}
+.kicker{display:inline-flex;align-items:center;gap:10px;padding:6px 16px 6px 6px;border-radius:999px;background:#fff;box-shadow:0 6px 20px rgba(31,44,212,.08);font-size:14px;font-weight:500;color:var(--ink-2)}
+.kicker img{width:28px;height:28px;border-radius:50%}
+.hero h1{font-size:clamp(40px,5.4vw,76px);margin:24px 0 20px;letter-spacing:-.04em;line-height:1.02}
+.rotator{display:block;color:var(--blue);font-size:1em;height:1.2em;overflow:hidden;white-space:nowrap;position:relative}
+.rot-word{display:inline-block;transition:transform .5s cubic-bezier(.2,.7,.2,1),opacity .5s}
+.rot-word.out{transform:translateY(-60%);opacity:0}
+.rot-word.in{transform:translateY(60%);opacity:0}
+.hero .lead{font-size:19px;max-width:520px}
+.btn-lg{height:58px;padding:0 28px;font-size:16px}
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+.hero-ctas .btn-primary{box-shadow:0 14px 30px rgba(31,44,212,.3)}
+.hero-prices{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:40px}
+.hp{display:flex;align-items:center;gap:12px;background:#fff;border-radius:18px;padding:12px 18px 12px 12px;box-shadow:0 10px 30px rgba(13,17,38,.07);transition:transform .2s}
+.hp:hover{transform:translateY(-3px)}
+.hp small{display:block;font-size:12px;color:var(--muted)}
+.hp b{font-size:20px;font-weight:600;letter-spacing:-.02em}
+.dot-egg{width:30px;height:38px;border-radius:50% 50% 50% 50%/58% 58% 42% 42%;background:linear-gradient(160deg,#F7D6B4,#D08A55);flex:none}
+.dot-egg.big{width:34px;height:42px;background:linear-gradient(160deg,#F4C9A0,#B8682F)}
+.hp-note{font-size:13px;color:var(--muted)}
+.hero-art{position:relative;height:620px}
+.sun{position:absolute;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#FFE08A,#FFC53D 60%,#F5AE12);right:30px;top:60px;box-shadow:0 30px 80px rgba(255,197,61,.45)}
+.arch{position:absolute;right:70px;top:30px;width:360px;height:540px;border-radius:200px 200px 32px 32px;overflow:hidden;border:8px solid #fff;box-shadow:0 40px 80px rgba(60,40,140,.25);background:#C9B3EF}
+.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.ring{position:absolute;left:20px;top:40px;width:132px;height:132px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px rgba(31,44,212,.35)}
+.ring svg{position:absolute;inset:0;width:100%;height:100%;animation:spin360 18s linear infinite}
+.ring text{fill:#fff;font-family:var(--sans);font-size:11px;font-weight:600}
+.ring img{width:58px;height:58px;border-radius:50%;border:2px solid var(--yolk)}
+@keyframes spin360{to{transform:rotate(360deg)}}
+.clip{position:absolute;right:0;bottom:70px;width:150px;height:190px;border-radius:24px;overflow:hidden;border:6px solid #fff;box-shadow:0 24px 50px rgba(13,17,38,.25);transform:rotate(4deg)}
+.clip video{width:100%;height:100%;object-fit:cover}
+.clip span{position:absolute;left:8px;top:8px;background:#fff;border-radius:999px;font-size:11px;font-weight:600;padding:4px 9px;display:flex;align-items:center;gap:5px}
+.clip i{width:6px;height:6px;border-radius:50%;background:#EF4444;animation:ping 2s infinite}
+.pick-card{position:absolute;left:0;bottom:40px;background:#fff;border-radius:20px;padding:14px 18px 14px 14px;display:flex;align-items:center;gap:12px;box-shadow:0 20px 50px rgba(13,17,38,.15);animation:bobby 6s ease-in-out infinite}
+@keyframes bobby{50%{transform:translateY(-10px)}}
+.pick-card .ic{width:42px;height:42px;border-radius:14px;background:var(--yolk);display:flex;align-items:center;justify-content:center}
+.pick-card .ic svg{width:20px;height:20px;color:var(--ink)}
+.pick-card b{display:block;font-size:15px}
+.pick-card small{font-size:12px;color:var(--muted)}
+.ticker{margin-top:0}
+@media (max-width:1080px){.arch{width:320px;height:480px;right:40px}.sun{width:380px;height:380px;right:0}}
+@media (max-width:980px){
+  .hero-grid{grid-template-columns:1fr;padding-bottom:48px}
+  .hero-art{height:560px;max-width:520px;width:100%;margin:0 auto}
+  .arch{right:50%;transform:translateX(50%)}
+  .sun{right:50%;transform:translateX(45%)}
+}
+@media (max-width:520px){
+  .hero{padding-top:32px}
+  .hero-art{height:470px}
+  .arch{width:270px;height:400px;top:20px}
+  .sun{width:300px;height:300px;top:50px}
+  .ring{width:96px;height:96px;left:0;top:10px}.ring img{width:40px;height:40px}.ring text{font-size:11px}
+  .clip{width:104px;height:136px;bottom:40px;right:-4px}
+  .pick-card{bottom:6px;left:0;padding:10px 14px 10px 10px}
+  .hp{padding:10px 14px 10px 10px}.hp b{font-size:18px}
+  .e1{left:70%}
+}
 </style>
 </head>
 <body>
@@ -368,30 +439,37 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
 <main id="top">
 
 <section class="hero">
+  <div class="hero-bg" aria-hidden="true">
+    <span class="blob b1"></span><span class="blob b2"></span>
+    <span class="fegg e1"><svg viewBox="0 0 40 50" aria-hidden="true"><ellipse cx="20" cy="27" rx="17" ry="21" fill="currentColor"/></svg></span><span class="fegg e2"><svg viewBox="0 0 40 50" aria-hidden="true"><ellipse cx="20" cy="27" rx="17" ry="21" fill="currentColor"/></svg></span><span class="fegg e3"><svg viewBox="0 0 40 50" aria-hidden="true"><ellipse cx="20" cy="27" rx="17" ry="21" fill="currentColor"/></svg></span>
+  </div>
   <div class="wrap hero-grid">
-    <div>
-      <h1 class="rv d1">Farm-fresh eggs, <span class="serif">packed with care.</span></h1>
-      <p class="lead rv d2">Egghub Foods brings quality eggs straight from the farm to your home and your shop, at the lowest possible prices.</p>
+    <div class="hero-copy">
+      <span class="kicker rv"><img src="images/logo.jpg" alt="">Egghub Foods · Mowe, Ogun State</span>
+      <h1 class="rv d1">Farm-fresh eggs,<span class="rotator serif" aria-live="polite"><span class="rot-word">packed with care.</span></span></h1>
+      <p class="lead rv d2">Quality eggs for your home and your shop, at the lowest possible prices. Order online, get your invoice instantly and pick up in Mowe.</p>
       <div class="hero-ctas rv d3">
-        <a class="btn btn-primary" href="#order">Order your crate <span class="arr">→</span></a>
-        <a class="btn btn-line" href="#prices">See prices</a>
+        <a class="btn btn-primary btn-lg" href="#order">Order your crate <span class="arr">→</span></a>
+        <a class="btn btn-line btn-lg" href="#prices">See prices</a>
       </div>
-      <div class="trust rv d3">
-        <div><b>₦<span data-p="medium">4,800</span></b>per crate, from</div>
-        <div><b>2</b>egg sizes</div>
-        <div><b>30</b>eggs in every crate</div>
+      <div class="hero-prices rv d3">
+        <a href="#prices" class="hp"><span class="dot-egg big"></span><span><small>Big eggs</small><b>₦<span data-p="big">5,200</span></b></span></a>
+        <a href="#prices" class="hp"><span class="dot-egg"></span><span><small>Medium eggs</small><b>₦<span data-p="medium">4,800</span></b></span></a>
+        <span class="hp-note">per crate of 30</span>
       </div>
     </div>
-    <div class="hero-media rv d2">
-      <div class="m m-main"><img src="images/founder-hero.jpg" alt="Egghub Foods founder holding a tray of fresh eggs and raising one egg" width="1000" height="1262"></div>
-      <div class="m"><img src="images/stock-crates.jpg" alt="Stacked crates of fresh brown eggs" width="720" height="1280"></div>
-      <div class="m"><img src="images/founder-face.jpg" alt="Smiling Egghub Foods founder in branded cap and T-shirt"></div>
-      <span class="live"><i></i>Taking orders today</span>
-      <div class="price-chip"><span class="egg"></span><div><small>Big eggs · per crate</small><strong>₦<span data-p="big">5,200</span></strong></div></div>
+    <div class="hero-art rv d2">
+      <div class="sun" aria-hidden="true"></div>
+      <div class="arch"><img src="images/founder-hero.jpg" alt="Egghub Foods founder holding a tray of fresh eggs and raising one egg" width="1000" height="1262"></div>
+      <div class="ring" aria-hidden="true">
+        <svg viewBox="0 0 120 120"><defs><path id="circ" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text textLength="284" lengthAdjust="spacing"><textPath href="#circ" textLength="284" lengthAdjust="spacing">FRESH EGGS • HEALTHY LIVING • </textPath></text></svg>
+        <img src="images/logo.jpg" alt="">
+      </div>
+      <div class="clip"><video src="images/stock.mp4" poster="images/stock-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Video of crates of fresh eggs"></video><span><i></i>In stock</span></div>
+      <div class="pick-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><b>Pickup in Mowe</b><small>Lotto Bus-Stop</small></span></div>
     </div>
   </div>
-
-  <div class="ticker" aria-hidden="true">
+<div class="ticker" aria-hidden="true">
     <div class="track">
       <span><span class="serif">Fresh</span> from the farm</span><span>Big &amp; medium eggs</span><span><span class="serif">Packed</span> with care</span><span>Bulk supply</span><span>Mowe, Ogun State</span><span><span class="serif">Lowest</span> prices</span>
       <span><span class="serif">Fresh</span> from the farm</span><span>Big &amp; medium eggs</span><span><span class="serif">Packed</span> with care</span><span>Bulk supply</span><span>Mowe, Ogun State</span><span><span class="serif">Lowest</span> prices</span>
@@ -803,6 +881,15 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
     els.forEach(function(el){ io.observe(el); });
   } else { els.forEach(function(el){ el.classList.add('in'); }); }
 
+
+  var rw = document.querySelector('.rot-word'), words = ['packed with care.','priced right.','ready for pickup.','fresh every day.'], wi = 0;
+  if(rw && !matchMedia('(prefers-reduced-motion: reduce)').matches){
+    setInterval(function(){
+      rw.classList.add('out');
+      setTimeout(function(){ wi = (wi + 1) % words.length; rw.textContent = words[wi]; rw.classList.remove('out'); rw.classList.add('in');
+        requestAnimationFrame(function(){ requestAnimationFrame(function(){ rw.classList.remove('in'); }); }); }, 450);
+    }, 2800);
+  }
   document.getElementById('yr').textContent = new Date().getFullYear();
 })();
 </script>
