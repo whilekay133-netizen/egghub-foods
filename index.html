@@ -246,7 +246,7 @@ nav{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:ce
 .inv-row small,.inv-foot small{display:block;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
 .inv-row b{display:block;font-size:15px;font-weight:600}
 .inv-row span{font-size:14px;color:var(--ink-2)}
-.inv-status{display:inline-block;margin-top:4px;font-size:12px!important;font-weight:600;background:var(--yolk-soft);color:#8A5A00!important;padding:3px 10px;border-radius:999px}
+.inv-status{display:inline-block;line-height:1.6;margin-top:4px;font-size:12px!important;font-weight:600;background:var(--yolk-soft);color:#8A5A00!important;padding:3px 10px;border-radius:999px}
 .inv-table{width:calc(100% - 52px);margin:18px 26px 0;border-collapse:collapse;font-size:14px}
 .inv-table th{text-align:left;font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em;padding:0 0 10px;border-bottom:1px solid var(--line)}
 .inv-table td{padding:14px 0;border-bottom:1px solid var(--line)}
@@ -256,10 +256,12 @@ nav{max-width:1180px;margin:0 auto;padding:14px 28px;display:flex;align-items:ce
 .inv-total strong{font-size:26px;font-weight:600;color:var(--blue);letter-spacing:-.02em}
 .inv-foot{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:20px 26px 6px;font-size:13px;color:var(--ink-2)}
 .inv-note{padding:8px 26px 22px;font-size:12px;color:var(--muted)}
-.inv-actions{display:grid;grid-template-columns:1fr 1.3fr;gap:10px;margin-top:16px}
+.inv-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.inv-actions #invWa{grid-column:span 2}
+.inv-tip{font-size:13px;color:var(--muted);text-align:center;margin:12px 6px 2px}
 .inv-actions .btn{width:100%}
 .inv-table td small{display:none;font-size:12px;color:var(--muted);margin-top:2px}
-@media (max-width:520px){.inv-dialog{padding:56px 14px 14px}.inv-row,.inv-foot{grid-template-columns:1fr}.inv-actions{grid-template-columns:1fr}.inv-top{padding:20px;flex-direction:column;align-items:flex-start}.inv-meta{text-align:left}.inv-meta h3{font-size:24px}.inv-table th:nth-child(3),.inv-table td:nth-child(3){display:none}.inv-table td small{display:block}}
+@media (max-width:520px){.inv-dialog{padding:56px 14px 14px}.inv-row,.inv-foot{grid-template-columns:1fr}.inv-actions{grid-template-columns:1fr 1fr}.inv-top{padding:20px;flex-direction:column;align-items:flex-start}.inv-meta{text-align:left}.inv-meta h3{font-size:24px}.inv-table th:nth-child(3),.inv-table td:nth-child(3){display:none}.inv-table td small{display:block}}
 .fine{font-size:12px;color:var(--muted);text-align:center;margin-top:12px}
 @media (max-width:960px){.order-wrap{grid-template-columns:1fr;padding:40px 24px;gap:40px;border-radius:28px}.builder{padding:24px}}
 
@@ -375,7 +377,7 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
         <a class="btn btn-line" href="#prices">See prices</a>
       </div>
       <div class="trust rv d3">
-        <div><b>₦4,800</b>per crate, from</div>
+        <div><b>₦<span data-p="medium">4,800</span></b>per crate, from</div>
         <div><b>1,000</b>crates every week</div>
         <div><b>30</b>eggs in every crate</div>
       </div>
@@ -385,7 +387,7 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
       <div class="m"><img src="images/stock-crates.jpg" alt="Stacked crates of fresh brown eggs" width="720" height="1280"></div>
       <div class="m"><img src="images/founder-face.jpg" alt="Smiling Egghub Foods founder in branded cap and T-shirt"></div>
       <span class="live"><i></i>Taking orders today</span>
-      <div class="price-chip"><span class="egg"></span><div><small>Big eggs · per crate</small><strong>₦5,200</strong></div></div>
+      <div class="price-chip"><span class="egg"></span><div><small>Big eggs · per crate</small><strong>₦<span data-p="big">5,200</span></strong></div></div>
     </div>
   </div>
 
@@ -412,13 +414,13 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
           <div><h3>Medium eggs</h3><p class="muted">Everyday value for homes and shops</p></div>
           <span class="tagpill soft">Best value</span>
         </div>
-        <div class="amount"><strong>₦4,800</strong><span>/ crate of 30</span></div>
+        <div class="amount"><strong>₦<span data-p="medium">4,800</span></strong><span>/ crate of 30</span></div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Farm-fresh medium-size eggs</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Great for daily cooking and baking</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Packed with care, every crate</li>
         </ul>
-        <a class="btn btn-primary" data-wa="Hello Egghub Foods, I want to order crates of MEDIUM eggs (₦4,800 per crate)." href="#">Order medium eggs <span class="arr">→</span></a>
+        <a class="btn btn-primary" data-wa="Hello Egghub Foods, I want to order crates of MEDIUM eggs (₦{medium} per crate)." href="#">Order medium eggs <span class="arr">→</span></a>
         <div class="eggs-art" aria-hidden="true"><i></i><i></i></div>
       </article>
       <article class="pcard featured rv d1">
@@ -426,13 +428,13 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
           <div><h3>Big eggs</h3><p class="muted">Bigger yolks, bigger servings</p></div>
           <span class="tagpill">Most popular</span>
         </div>
-        <div class="amount"><strong>₦5,200</strong><span>/ crate of 30</span></div>
+        <div class="amount"><strong>₦<span data-p="big">5,200</span></strong><span>/ crate of 30</span></div>
         <ul>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Farm-fresh big-size eggs</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Ideal for restaurants, caterers and families</li>
           <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>Packed with care, every crate</li>
         </ul>
-        <a class="btn btn-yolk" data-wa="Hello Egghub Foods, I want to order crates of BIG eggs (₦5,200 per crate)." href="#">Order big eggs <span class="arr">→</span></a>
+        <a class="btn btn-yolk" data-wa="Hello Egghub Foods, I want to order crates of BIG eggs (₦{big} per crate)." href="#">Order big eggs <span class="arr">→</span></a>
         <div class="eggs-art" aria-hidden="true" style="color:#fff"><i></i><i></i></div>
       </article>
     </div>
@@ -496,8 +498,8 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
         <div class="field">
           <span>Egg size</span>
           <div class="sizes">
-            <div class="size"><input type="radio" name="size" id="s-big" value="big" checked><label for="s-big"><b>Big eggs</b><span>₦5,200 / crate</span></label></div>
-            <div class="size"><input type="radio" name="size" id="s-med" value="medium"><label for="s-med"><b>Medium eggs</b><span>₦4,800 / crate</span></label></div>
+            <div class="size"><input type="radio" name="size" id="s-big" value="big" checked><label for="s-big"><b>Big eggs</b><span>₦<span data-p="big">5,200</span> / crate</span></label></div>
+            <div class="size"><input type="radio" name="size" id="s-med" value="medium"><label for="s-med"><b>Medium eggs</b><span>₦<span data-p="medium">4,800</span> / crate</span></label></div>
           </div>
         </div>
         <div class="field">
@@ -557,7 +559,7 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
         <a class="btn btn-primary rv d2" href="#order">Start your order <span class="arr">→</span></a>
       </div>
       <div class="steps">
-        <div class="step rv"><span class="num">01</span><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4.4 0 7-3.4 7-8S15.6 2 12 2 5 9.6 5 14s2.6 8 7 8z"/></svg></span><span class="pill">Step 1</span><h3>Choose your eggs</h3><p>Pick big eggs (₦5,200) or medium eggs (₦4,800) and how many crates you need.</p></div>
+        <div class="step rv"><span class="num">01</span><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4.4 0 7-3.4 7-8S15.6 2 12 2 5 9.6 5 14s2.6 8 7 8z"/></svg></span><span class="pill">Step 1</span><h3>Choose your eggs</h3><p>Pick big eggs (₦<span data-p="big">5,200</span>) or medium eggs (₦<span data-p="medium">4,800</span>) and how many crates you need.</p></div>
         <div class="step rv d1"><span class="num">02</span><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5.1A8.4 8.4 0 1 1 21 11.5z"/></svg></span><span class="pill">Step 2</span><h3>Get your invoice</h3><p>An invoice is created instantly. Download it and send the order to us on WhatsApp.</p></div>
         <div class="step rv d2"><span class="num">03</span><span class="icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7zM5.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM18.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg></span><span class="pill">Step 3</span><h3>Pick up your eggs</h3><p>Collect your crates at our Mowe pickup point, packed with care and ready to go.</p></div>
       </div>
@@ -591,7 +593,7 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
       <span class="ring r1"></span><span class="ring r2"></span>
       <div>
         <h2>Ready for <span class="serif">fresher eggs?</span></h2>
-        <p>Chat with us on WhatsApp or give us a call. Big eggs ₦5,200 · Medium eggs ₦4,800 per crate.</p>
+        <p>Chat with us on WhatsApp or give us a call. Big eggs ₦<span data-p="big">5,200</span> · Medium eggs ₦<span data-p="medium">4,800</span> per crate.</p>
         <div class="btns">
           <a class="btn btn-yolk" href="#" data-wa="Hello Egghub Foods, I want to order eggs.">Chat on WhatsApp <span class="arr">→</span></a>
           <a class="btn btn-glass" href="tel:+2348069133358">Call +234 806 913 3358</a>
@@ -618,7 +620,7 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
       </div>
       <div>
         <h4>Shop</h4>
-        <ul><li><a href="#prices">Big eggs · ₦5,200</a></li><li><a href="#prices">Medium eggs · ₦4,800</a></li><li><a href="#bulk">Bulk supply</a></li><li><a href="#order">Order online</a></li></ul>
+        <ul><li><a href="#prices">Big eggs · ₦<span data-p="big">5,200</span></a></li><li><a href="#prices">Medium eggs · ₦<span data-p="medium">4,800</span></a></li><li><a href="#bulk">Bulk supply</a></li><li><a href="#order">Order online</a></li></ul>
       </div>
       <div>
         <h4>Contact</h4>
@@ -657,9 +659,11 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
       <p class="inv-note">Payment details are shared on WhatsApp. Your order is confirmed once Egghub Foods replies.</p>
     </div>
     <div class="inv-actions">
+      <button class="btn btn-line" id="invImg" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="9" cy="9" r="2"/><path d="m21 15-5-5L5 21"/></svg>Save image</button>
       <button class="btn btn-line" id="invPdf" type="button"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M4 21h16"/></svg>Download PDF</button>
       <a class="btn btn-primary" id="invWa" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 0 1-12.6 7.3L3 20l1.3-5.1A8.4 8.4 0 1 1 21 11.5z"/></svg>Send order on WhatsApp</a>
     </div>
+    <p class="inv-tip"><b>Tip:</b> save the invoice first, then tap <b>Send order on WhatsApp</b> and attach the saved invoice in the chat.</p>
   </div>
 </div>
 
@@ -672,7 +676,30 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
 (function(){
   var WA = '2348069133358';
   var waUrl = function(t){ return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t); };
-  document.querySelectorAll('[data-wa]').forEach(function(a){ a.href = waUrl(a.dataset.wa); a.target = '_blank'; a.rel = 'noopener'; });
+  window.EGG_PRICES = { big: 5200, medium: 4800 }; // fallback if the price sheet can't be reached
+  // Prices are read from the owner's Google Sheet (cell B2 = big, B3 = medium)
+  var SHEET_ID = '1K72CHDNc5YXoUs12Sfu6lXfljheoXYmj-rNJY3XwiPw';
+  function applyPrices(){
+    var P = window.EGG_PRICES;
+    document.querySelectorAll('[data-p]').forEach(function(el){ el.textContent = P[el.dataset.p].toLocaleString('en-NG'); });
+    document.querySelectorAll('[data-wa]').forEach(function(a){
+      var t = a.dataset.wa.replace('{big}', P.big.toLocaleString('en-NG')).replace('{medium}', P.medium.toLocaleString('en-NG'));
+      a.href = waUrl(t); a.target = '_blank'; a.rel = 'noopener';
+    });
+    if(document.getElementById('total') && window.__renderReady) render();
+  }
+  function loadPrices(){
+    if(!SHEET_ID || SHEET_ID.indexOf('PASTE') === 0) return;
+    fetch('https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:csv&range=A2:B3&t=' + Date.now())
+      .then(function(r){ if(!r.ok) throw 0; return r.text(); })
+      .then(function(csv){
+        var rows = csv.trim().split(/\r?\n/).map(function(l){ return l.split('","').map(function(c){ return c.replace(/"/g,''); }); });
+        var num = function(v){ return parseInt(String(v).replace(/[^\d]/g,''), 10); };
+        var big = num(rows[0] && rows[0][1]), med = num(rows[1] && rows[1][1]);
+        if(big > 0 && med > 0){ window.EGG_PRICES = { big: big, medium: med }; applyPrices(); }
+      }).catch(function(){});
+  }
+  applyPrices();
 
   var hdr = document.getElementById('hdr');
   addEventListener('scroll', function(){ hdr.classList.toggle('scrolled', scrollY > 8); }, {passive:true});
@@ -681,7 +708,7 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
   mb.addEventListener('click', function(){ var o = links.classList.toggle('open'); mb.setAttribute('aria-expanded', o); });
   links.addEventListener('click', function(e){ if(e.target.tagName === 'A'){ links.classList.remove('open'); mb.setAttribute('aria-expanded', false); } });
 
-  var PRICES = { big: 5200, medium: 4800 };
+  var PRICES = window.EGG_PRICES;
   var NAMES = { big: 'Big eggs', medium: 'Medium eggs' };
   var qty = document.getElementById('qty'), total = document.getElementById('total'),
       eggs = document.getElementById('eggs'), form = document.getElementById('builder'),
@@ -692,7 +719,7 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
   var val = function(name){ return document.querySelector('input[name=' + name + ']:checked').value; };
   function clamp(n){ n = Math.round(+n); return isNaN(n) ? 1 : Math.max(1, Math.min(1000, n)); }
   function render(){
-    var q = clamp(qty.value), size = val('size');
+    var q = clamp(qty.value), size = val('size'); PRICES = window.EGG_PRICES;
     total.textContent = naira(q * PRICES[size]);
     eggs.textContent = fmt(q * 30) + ' eggs';
   }
@@ -703,7 +730,8 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
   qty.addEventListener('blur', function(){ set(qty.value); });
   document.querySelectorAll('.quick button').forEach(function(b){ b.onclick = function(){ set(b.dataset.q); }; });
   document.querySelectorAll('#builder input[type=radio]').forEach(function(r){ r.addEventListener('change', render); });
-  render();
+  window.__renderReady = true; render();
+  loadPrices();
 
   // ---- invoice ----
   var order = null, back = document.getElementById('invBack'), lastFocus = null;
@@ -718,7 +746,7 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
     cname.classList.toggle('bad', !name); cphone.classList.toggle('bad', digits.length < 10);
     if(!name || digits.length < 10){ err.textContent = !name ? 'Please enter your name.' : 'Please enter a valid phone number.'; (!name ? cname : cphone).focus(); return; }
     err.textContent = '';
-    var q = clamp(qty.value), size = val('size'), d = new Date();
+    var q = clamp(qty.value), size = val('size'), d = new Date(); PRICES = window.EGG_PRICES;
     order = { no: invoiceNo(d), date: d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}), name: name, phone: phone,
               item: NAMES[size], qty: q, price: PRICES[size], total: q * PRICES[size] };
     $('invNo').textContent = order.no; $('invName').textContent = order.name; $('invPhone').textContent = order.phone;
@@ -737,41 +765,52 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
 
   function loadScript(src){ return new Promise(function(res, rej){ var s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = rej; document.head.appendChild(s); }); }
   function imgData(src){ return fetch(src).then(function(r){ return r.blob(); }).then(function(b){ return new Promise(function(res){ var fr = new FileReader(); fr.onload = function(){ res(fr.result); }; fr.readAsDataURL(b); }); }); }
+  $('invImg').onclick = function(){
+    if(!order) return;
+    var btn = this, label = btn.innerHTML; btn.disabled = true; btn.textContent = 'Preparing image…';
+    (window.html2canvas ? Promise.resolve() : loadScript('js/html2canvas.min.js')).then(function(){
+      return window.html2canvas($('invoice'), { scale: 2, backgroundColor: '#ffffff', useCORS: true });
+    }).then(function(canvas){
+      var a = document.createElement('a'); a.download = 'Egghub-Invoice-' + order.no + '.png'; a.href = canvas.toDataURL('image/png');
+      document.body.appendChild(a); a.click(); a.remove();
+    }).catch(function(){ alert('Could not create the image. Please try Download PDF instead.'); })
+      .then(function(){ btn.disabled = false; btn.innerHTML = label; });
+  };
   $('invPdf').onclick = function(){
     if(!order) return;
     var btn = this, label = btn.innerHTML; btn.disabled = true; btn.textContent = 'Preparing PDF…';
     Promise.all([ window.jspdf ? null : loadScript('js/jspdf.umd.min.js'), imgData('images/logo.jpg') ]).then(function(r){
-      var logo = r[1], doc = new window.jspdf.jsPDF({ unit:'pt', format:'a4' }), W = 595, M = 48, y;
+      var logo = r[1], doc = new window.jspdf.jsPDF({ unit:'pt', format:'a5' }), W = 420, M = 32, y;
       var N = function(n){ return 'NGN ' + fmt(n); };
-      doc.setFillColor(31,44,212); doc.rect(0,0,W,120,'F');
-      doc.addImage(logo,'JPEG',M,32,56,56);
-      doc.setTextColor(255,255,255); doc.setFont('helvetica','bold'); doc.setFontSize(20); doc.text('Egg', M+70, 58);
-      doc.setTextColor(255,197,61); doc.text('hub', M+70+doc.getTextWidth('Egg'), 58);
-      doc.setTextColor(255,255,255); doc.text(' Foods', M+70+doc.getTextWidth('Egghub'), 58);
-      doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(211,215,255); doc.text('Fresh eggs. Healthy living.', M+70, 76);
-      doc.setFont('helvetica','bold'); doc.setFontSize(26); doc.setTextColor(255,255,255); doc.text('INVOICE', W-M, 60, {align:'right'});
-      doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(211,215,255); doc.text(order.no, W-M, 78, {align:'right'});
-      y = 165; doc.setFontSize(8); doc.setTextColor(91,96,120);
-      doc.text('BILLED TO', M, y); doc.text('DATE', 330, y); doc.text('STATUS', 450, y);
-      doc.setFontSize(12); doc.setTextColor(13,17,38); doc.setFont('helvetica','bold');
-      doc.text(order.name, M, y+18); doc.text(order.date, 330, y+18);
-      doc.setTextColor(138,90,0); doc.setFontSize(10); doc.text('Awaiting confirmation', 450, y+18);
-      doc.setFont('helvetica','normal'); doc.setFontSize(11); doc.setTextColor(43,48,80); doc.text(order.phone, M, y+34);
-      y = 240; doc.setDrawColor(230,232,240); doc.setFillColor(246,247,251); doc.rect(M, y, W-2*M, 28, 'F');
-      doc.setFontSize(8); doc.setFont('helvetica','bold'); doc.setTextColor(91,96,120);
-      doc.text('ITEM', M+12, y+18); doc.text('QTY', 320, y+18, {align:'right'}); doc.text('PRICE', 420, y+18, {align:'right'}); doc.text('AMOUNT', W-M-12, y+18, {align:'right'});
-      y += 52; doc.setFont('helvetica','normal'); doc.setFontSize(11); doc.setTextColor(13,17,38);
-      doc.text(order.item + ' (crate of 30)', M+12, y); doc.text(fmt(order.qty), 320, y, {align:'right'}); doc.text(N(order.price), 420, y, {align:'right'}); doc.text(N(order.total), W-M-12, y, {align:'right'});
-      y += 18; doc.line(M, y, W-M, y);
-      y += 30; doc.setFillColor(238,240,255); doc.roundedRect(300, y, W-M-300, 48, 8, 8, 'F');
-      doc.setFont('helvetica','bold'); doc.setFontSize(12); doc.text('Total', 316, y+30);
-      doc.setTextColor(31,44,212); doc.setFontSize(18); doc.text(N(order.total), W-M-14, y+31, {align:'right'});
-      y += 100; doc.setFontSize(8); doc.setTextColor(91,96,120); doc.text('PICKUP POINT', M, y); doc.text('CONTACT', 330, y);
-      doc.setFont('helvetica','normal'); doc.setFontSize(10); doc.setTextColor(43,48,80);
-      doc.text(['KM 1, Lotto-Simawa Road,','Lotto Bus-Stop, Mowe, Ogun State'], M, y+16); doc.text(['+234 806 913 3358','egghubfoods@gmail.com','Instagram: @egghubfoods'], 330, y+16);
-      y += 80; doc.setFontSize(9); doc.setTextColor(91,96,120);
-      doc.text('Payment details are shared on WhatsApp. Your order is confirmed once Egghub Foods replies.', M, y);
-      doc.setFillColor(255,197,61); doc.rect(0, 830, W, 12, 'F');
+      doc.setFillColor(31,44,212); doc.rect(0,0,W,92,'F');
+      doc.addImage(logo,'JPEG',M,22,44,44);
+      doc.setFont('helvetica','bold'); doc.setFontSize(15); doc.setTextColor(255,255,255); doc.text('Egg', M+54, 42);
+      doc.setTextColor(255,197,61); doc.text('hub', M+54+doc.getTextWidth('Egg'), 42);
+      doc.setTextColor(255,255,255); doc.text(' Foods', M+54+doc.getTextWidth('Egghub'), 42);
+      doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor(211,215,255); doc.text('Fresh eggs. Healthy living.', M+54, 56);
+      doc.setFont('helvetica','bold'); doc.setFontSize(18); doc.setTextColor(255,255,255); doc.text('INVOICE', W-M, 44, {align:'right'});
+      doc.setFont('helvetica','normal'); doc.setFontSize(8); doc.setTextColor(211,215,255); doc.text(order.no, W-M, 58, {align:'right'});
+      y = 124; doc.setFontSize(7); doc.setTextColor(91,96,120);
+      doc.text('BILLED TO', M, y); doc.text('DATE', 220, y); doc.text('STATUS', 310, y);
+      doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.setTextColor(13,17,38);
+      doc.text(order.name, M, y+14); doc.text(order.date, 220, y+14);
+      doc.setTextColor(138,90,0); doc.setFontSize(8); doc.text('Awaiting confirmation', 310, y+14);
+      doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(43,48,80); doc.text(order.phone, M, y+27);
+      y = 176; doc.setFillColor(246,247,251); doc.rect(M, y, W-2*M, 22, 'F');
+      doc.setFontSize(7); doc.setFont('helvetica','bold'); doc.setTextColor(91,96,120);
+      doc.text('ITEM', M+8, y+14); doc.text('QTY', 220, y+14, {align:'right'}); doc.text('PRICE', 300, y+14, {align:'right'}); doc.text('AMOUNT', W-M-8, y+14, {align:'right'});
+      y += 40; doc.setFont('helvetica','normal'); doc.setFontSize(9); doc.setTextColor(13,17,38);
+      doc.text(order.item + ' (crate of 30)', M+8, y); doc.text(fmt(order.qty), 220, y, {align:'right'}); doc.text(N(order.price), 300, y, {align:'right'}); doc.text(N(order.total), W-M-8, y, {align:'right'});
+      y += 14; doc.setDrawColor(230,232,240); doc.line(M, y, W-M, y);
+      y += 20; doc.setFillColor(238,240,255); doc.roundedRect(200, y, W-M-200, 40, 6, 6, 'F');
+      doc.setFont('helvetica','bold'); doc.setFontSize(10); doc.text('Total', 212, y+25);
+      doc.setTextColor(31,44,212); doc.setFontSize(14); doc.text(N(order.total), W-M-12, y+26, {align:'right'});
+      y += 80; doc.setFontSize(7); doc.setTextColor(91,96,120); doc.text('PICKUP POINT', M, y); doc.text('CONTACT', 220, y);
+      doc.setFont('helvetica','normal'); doc.setFontSize(8.5); doc.setTextColor(43,48,80);
+      doc.text(['KM 1, Lotto-Simawa Road,','Lotto Bus-Stop, Mowe, Ogun State'], M, y+13); doc.text(['+234 806 913 3358','egghubfoods@gmail.com','Instagram: @egghubfoods'], 220, y+13);
+      y += 64; doc.setFontSize(7.5); doc.setTextColor(91,96,120);
+      doc.text(doc.splitTextToSize('Payment details are shared on WhatsApp. Your order is confirmed once Egghub Foods replies.', W-2*M), M, y);
+      doc.setFillColor(255,197,61); doc.rect(0, 585, W, 10, 'F');
       doc.save('Egghub-Invoice-' + order.no + '.pdf');
     }).catch(function(){ alert('Could not create the PDF. Please check your connection and try again.'); })
       .then(function(){ btn.disabled = false; btn.innerHTML = label; });
