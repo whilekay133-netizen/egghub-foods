@@ -157,5 +157,45 @@
         requestAnimationFrame(function(){ requestAnimationFrame(function(){ rw.classList.remove('in'); }); }); }, 450);
     }, 2800);
   }
+    // ---- gallery ----
+  (function(){
+    var track = document.getElementById('gTrack'); if(!track) return;
+    var cards = Array.prototype.slice.call(track.querySelectorAll('.gcard')), prev = document.getElementById('gPrev'),
+        next = document.getElementById('gNext'), bar = document.getElementById('gBar'), now = document.getElementById('gNow');
+    function step(){ return cards[1] ? cards[1].offsetLeft - cards[0].offsetLeft : track.clientWidth; }
+    function update(){
+      var max = track.scrollWidth - track.clientWidth, x = track.scrollLeft, p = max > 0 ? x / max : 0;
+      var vis = track.clientWidth / track.scrollWidth;
+      bar.style.width = Math.max(12, vis * 100) + '%';
+      bar.style.transform = 'translateX(' + (p * (100 / Math.max(vis, .12) - 100)) + '%)';
+      prev.disabled = x < 4; next.disabled = x > max - 4;
+      var idx = 0; cards.forEach(function(c, i){ if(c.offsetLeft - cards[0].offsetLeft <= x + 10) idx = i; });
+      now.textContent = String(idx + 1).padStart(2, '0');
+    }
+    prev.onclick = function(){ track.scrollBy({ left: -step(), behavior: 'smooth' }); };
+    next.onclick = function(){ track.scrollBy({ left: step(), behavior: 'smooth' }); };
+    track.addEventListener('scroll', update, { passive: true }); addEventListener('resize', update); update();
+
+    var lb = document.getElementById('lightbox'), media = document.getElementById('lbMedia'), cap = document.getElementById('lbCap'),
+        btns = Array.prototype.slice.call(track.querySelectorAll('.gbtn')), cur = 0;
+    if(!lb || typeof lb.showModal !== 'function') return;
+    function show(i){
+      cur = (i + btns.length) % btns.length; var b = btns[cur], el;
+      media.textContent = '';
+      if(b.dataset.kind === 'video'){ el = document.createElement('video'); el.src = b.dataset.src; el.autoplay = true; el.muted = true; el.loop = true; el.playsInline = true; el.controls = true; }
+      else { el = document.createElement('img'); el.src = b.dataset.src; el.alt = b.querySelector('img').alt; }
+      media.appendChild(el); cap.textContent = b.dataset.title + '  ·  ' + (cur + 1) + ' / ' + btns.length;
+    }
+    btns.forEach(function(b, i){ b.addEventListener('click', function(){ show(i); lb.showModal(); document.body.style.overflow = 'hidden'; }); });
+    function close(){ lb.close(); }
+    lb.addEventListener('close', function(){ media.textContent = ''; document.body.style.overflow = ''; });
+    document.getElementById('lbClose').onclick = close;
+    document.getElementById('lbPrev').onclick = function(){ show(cur - 1); };
+    document.getElementById('lbNext').onclick = function(){ show(cur + 1); };
+    lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
+    lb.addEventListener('keydown', function(e){ if(e.key === 'ArrowLeft') show(cur - 1); if(e.key === 'ArrowRight') show(cur + 1); });
+    var sx = null; lb.addEventListener('touchstart', function(e){ sx = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener('touchend', function(e){ if(sx === null) return; var dx = e.changedTouches[0].clientX - sx; if(Math.abs(dx) > 50) show(cur + (dx < 0 ? 1 : -1)); sx = null; });
+  })();
   document.getElementById('yr').textContent = new Date().getFullYear();
 })();
