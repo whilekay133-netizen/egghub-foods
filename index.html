@@ -586,6 +586,30 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
 .lb-thumbs button[aria-current=true]{opacity:1;border-color:var(--yolk)}
 .lb-thumbs img{width:100%;height:100%;object-fit:cover}
 @media (max-width:600px){.lb-arrow{display:none}.lb-thumbs button{width:48px;height:48px}}
+
+/* ===== hero v4: blended video ===== */
+.hero-art{position:relative;height:640px}
+.blend-glow{position:absolute;left:50%;top:48%;width:520px;height:560px;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(closest-side,#C2A2D6 0%,#D6C0E6 55%,rgba(240,232,250,0) 100%);filter:blur(10px)}
+.blend-word{position:absolute;z-index:1;left:0;right:0;bottom:118px;text-align:center;font-family:var(--serif);font-style:italic;font-size:clamp(84px,9vw,132px);line-height:1;letter-spacing:-.03em;color:#fff;text-shadow:0 10px 40px rgba(60,30,110,.35);transform:rotate(-6deg);pointer-events:none;user-select:none;mix-blend-mode:normal}
+.blend-word em{font-style:italic;color:var(--yolk)}
+.blend{position:absolute;left:50%;top:-10px;bottom:-10px;width:520px;transform:translateX(-50%);-webkit-mask-image:radial-gradient(ellipse 47% 47% at 50% 47%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 47% 47% at 50% 47%,#000 58%,transparent 100%)}
+.blend video{width:100%;height:100%;object-fit:cover;object-position:50% 20%}
+.b-egg{position:absolute;border-radius:50% 50% 50% 50%/58% 58% 42% 42%;box-shadow:0 14px 28px rgba(120,70,30,.22);animation:floaty 7s ease-in-out infinite}
+.b1e{width:46px;height:58px;right:10%;top:12%;background:linear-gradient(160deg,#F7D3AF,#C47A44)}
+.b2e{width:30px;height:38px;left:6%;top:58%;background:linear-gradient(160deg,#FFF,#EADFD3);animation-delay:-3s}
+.b3e{width:24px;height:30px;right:14%;bottom:12%;background:linear-gradient(160deg,#FFE08A,#F5AE12);animation-delay:-5s}
+.hero-art .ring{left:2%;top:6%;z-index:2}
+.hero-art .pick-card{left:auto;right:0;top:42%;bottom:auto;z-index:2}
+@media (max-width:980px){.hero-art{height:580px;max-width:560px;width:100%;margin:0 auto}}
+@media (max-width:520px){
+  .hero-art{height:470px}
+  .blend{width:340px}
+  .blend-glow{width:360px;height:420px}
+  .blend-word{font-size:72px;bottom:70px}
+  .hero-art .pick-card{right:0;top:auto;bottom:10px}
+  .hero-art .ring{left:0;top:0}
+  .b1e{width:30px;height:38px;top:4%;right:22%}
+}
 </style>
 </head>
 <body>
@@ -627,13 +651,14 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
       </div>
     </div>
     <div class="hero-art rv d2">
-      <div class="sun" aria-hidden="true"></div>
-      <div class="arch"><video src="images/founder-hero.mp4" poster="images/founder-hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Egghub Foods founder smiling and presenting a fresh egg to the camera"></video></div>
+      <div class="blend-glow" aria-hidden="true"></div>
+      <div class="blend"><video src="images/founder-hero.mp4" poster="images/founder-hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Egghub Foods founder smiling and presenting a fresh egg to the camera"></video></div>
+      <div class="blend-word" aria-hidden="true">farm <em>fresh</em></div>
+      <span class="b-egg b1e" aria-hidden="true"></span><span class="b-egg b2e" aria-hidden="true"></span><span class="b-egg b3e" aria-hidden="true"></span>
       <div class="ring" aria-hidden="true">
         <svg viewBox="0 0 120 120"><defs><path id="circ" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text textLength="284" lengthAdjust="spacing"><textPath href="#circ" textLength="284" lengthAdjust="spacing">FRESH EGGS • HEALTHY LIVING • </textPath></text></svg>
         <img src="images/logo.jpg" alt="">
       </div>
-      <div class="clip"><video src="images/stock.mp4" poster="images/stock-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Video of crates of fresh eggs"></video><span><i></i>In stock</span></div>
       <div class="pick-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><b>Pickup in Mowe</b><small>Lotto Bus-Stop</small></span></div>
     </div>
   </div>
