@@ -2,8 +2,7 @@
   var WA = '2348069133358';
   var waUrl = function(t){ return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t); };
   window.EGG_PRICES = { big: 5200, medium: 4800 }; // fallback if the price sheet can't be reached
-  // Prices are read from the owner's Google Sheet (cell B2 = big, B3 = medium)
-  var SHEET_ID = '1K72CHDNc5YXoUs12Sfu6lXfljheoXYmj-rNJY3XwiPw';
+  // Prices are set by the owner on /admin and served by /api/prices
   function applyPrices(){
     var P = window.EGG_PRICES;
     document.querySelectorAll('[data-p]').forEach(function(el){ el.textContent = P[el.dataset.p].toLocaleString('en-NG'); });
@@ -14,15 +13,11 @@
     if(document.getElementById('total') && window.__renderReady) render();
   }
   function loadPrices(){
-    if(!SHEET_ID || SHEET_ID.indexOf('PASTE') === 0) return;
-    fetch('https://docs.google.com/spreadsheets/d/' + SHEET_ID + '/gviz/tq?tqx=out:csv&range=A2:B3&t=' + Date.now())
-      .then(function(r){ if(!r.ok) throw 0; return r.text(); })
-      .then(function(csv){
-        var rows = csv.trim().split(/\r?\n/).map(function(l){ return l.split('","').map(function(c){ return c.replace(/"/g,''); }); });
-        var num = function(v){ return parseInt(String(v).replace(/[^\d]/g,''), 10); };
-        var big = num(rows[0] && rows[0][1]), med = num(rows[1] && rows[1][1]);
-        var ok = function(n){ return n >= 1000 && n <= 50000; };
-        if(ok(big) && ok(med)){ window.EGG_PRICES = { big: big, medium: med }; applyPrices(); }
+    fetch('/api/prices', { cache: 'no-store' })
+      .then(function(r){ if(!r.ok) throw 0; return r.json(); })
+      .then(function(p){
+        var ok = function(n){ return Number.isInteger(n) && n >= 1000 && n <= 50000; };
+        if(ok(p.big) && ok(p.medium)){ window.EGG_PRICES = { big: p.big, medium: p.medium }; applyPrices(); }
       }).catch(function(){});
   }
   applyPrices();
@@ -74,7 +69,7 @@
     err.textContent = '';
     var q = clamp(qty.value), size = val('size'), d = new Date(); PRICES = window.EGG_PRICES;
     order = { no: invoiceNo(d), date: d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}), name: name, phone: phone,
-              item: NAMES[size], qty: q, price: PRICES[size], total: q * PRICES[size] };
+              size: size, item: NAMES[size], qty: q, price: PRICES[size], total: q * PRICES[size] };
     $('invNo').textContent = order.no; $('invName').textContent = order.name; $('invPhone').textContent = order.phone;
     $('invDate').textContent = order.date; $('invItem').innerHTML = ''; $('invItem').append(order.item + ' (crate of 30)'); var sm = document.createElement('small'); sm.textContent = fmt(order.qty) + ' × ' + naira(order.price); $('invItem').appendChild(sm);
     $('invQty').textContent = fmt(order.qty); $('invPrice').textContent = naira(order.price);
@@ -102,10 +97,8 @@
     }).catch(function(){ alert('Could not create the image. Please try Download PDF instead.'); })
       .then(function(){ btn.disabled = false; btn.innerHTML = label; });
   };
-  $('invPdf').onclick = function(){
-    if(!order) return;
-    var btn = this, label = btn.innerHTML; btn.disabled = true; btn.textContent = 'Preparing PDF…';
-    Promise.all([ window.jspdf ? null : loadScript('js/jspdf.umd.min.js'), imgData('images/logo.jpg') ]).then(function(r){
+  function buildPdf(){
+    return Promise.all([ window.jspdf ? null : loadScript('js/jspdf.umd.min.js'), imgData('images/logo.jpg') ]).then(function(r){
       var logo = r[1], doc = new window.jspdf.jsPDF({ unit:'pt', format:'a5' }), W = 420, M = 32, y;
       var N = function(n){ return 'NGN ' + fmt(n); };
       doc.setFillColor(31,44,212); doc.rect(0,0,W,92,'F');
@@ -137,9 +130,55 @@
       y += 64; doc.setFontSize(7.5); doc.setTextColor(91,96,120);
       doc.text(doc.splitTextToSize('Payment details are shared on WhatsApp. Your order is confirmed once Egghub Foods replies.', W-2*M), M, y);
       doc.setFillColor(255,197,61); doc.rect(0, 585, W, 10, 'F');
-      doc.save('Egghub-Invoice-' + order.no + '.pdf');
-    }).catch(function(){ alert('Could not create the PDF. Please check your connection and try again.'); })
-      .then(function(){ btn.disabled = false; btn.innerHTML = label; });
+      return doc;
+    });
+  }
+  function busy(btn, text, p){
+    var label = btn.innerHTML; btn.disabled = true; btn.textContent = text;
+    return p.then(function(v){ btn.disabled = false; btn.innerHTML = label; return v; }, function(e){ btn.disabled = false; btn.innerHTML = label; throw e; });
+  }
+  var fileName = function(){ return 'Egghub-Invoice-' + order.no + '.pdf'; };
+  $('invPdf').onclick = function(){
+    if(!order) return;
+    busy(this, 'Preparing PDF…', buildPdf()).then(function(doc){ doc.save(fileName()); })
+      .catch(function(){ alert('Could not create the PDF. Please check your connection and try again.'); });
+  };
+
+  // Share the PDF straight into WhatsApp, Gmail, etc. (phones)
+  var shareBtn = $('invShare');
+  var canShareFiles = (function(){ try { return !!(navigator.canShare && navigator.canShare({ files: [new File(['x'], 'x.pdf', { type: 'application/pdf' })] })); } catch(e){ return false; } })();
+  if(canShareFiles) shareBtn.hidden = false;
+  shareBtn.onclick = function(){
+    if(!order) return;
+    busy(this, 'Opening…', buildPdf()).then(function(doc){
+      var file = new File([doc.output('blob')], fileName(), { type: 'application/pdf' });
+      return navigator.share({ files: [file], title: 'Egghub invoice ' + order.no, text: 'Egghub Foods order ' + order.no + ' – ' + naira(order.total) });
+    }).catch(function(e){ if(e && e.name === 'AbortError') return; alert('Sharing is not available here. Please use Download PDF.'); });
+  };
+
+  // Email the invoice to Egghub with the PDF attached
+  var mailMsg = $('invMailMsg');
+  $('invMail').onclick = function(){
+    if(!order) return;
+    var em = $('invEmail').value.trim().slice(0,120);
+    if(em && !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(em)){ mailMsg.className = 'inv-msg bad'; mailMsg.textContent = 'Please check your email address, or leave it empty.'; $('invEmail').focus(); return; }
+    mailMsg.className = 'inv-msg'; mailMsg.textContent = '';
+    var pdfDoc;
+    busy(this, 'Sending…', buildPdf().then(function(doc){
+      pdfDoc = doc;
+      var b64 = doc.output('datauristring').split(',')[1];
+      return fetch('/api/send-invoice', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ no: order.no, name: order.name, phone: order.phone, email: em, size: order.size, qty: order.qty, total: order.total, pdf: b64 }) })
+        .then(function(r){ return r.json().catch(function(){ return {}; }).then(function(j){ return { status: r.status, j: j }; }); });
+    })).then(function(r){
+      if(r.status === 200){ mailMsg.className = 'inv-msg ok'; mailMsg.textContent = 'Sent! Egghub Foods has your invoice by email. They will reply on WhatsApp.'; return; }
+      if(r.status === 503 && pdfDoc){ // email service not set up: fall back to the customer's own mail app
+        pdfDoc.save(fileName());
+        location.href = 'mailto:egghubfoods@gmail.com?subject=' + encodeURIComponent('Order ' + order.no) + '&body=' + encodeURIComponent('Hello Egghub Foods,\n\nPlease find my invoice ' + order.no + ' attached (' + naira(order.total) + ').\n\nName: ' + order.name + '\nPhone: ' + order.phone + '\n');
+        mailMsg.className = 'inv-msg'; mailMsg.textContent = 'Your invoice was downloaded and your email app opened. Attach the PDF and press send.'; return;
+      }
+      mailMsg.className = 'inv-msg bad'; mailMsg.textContent = (r.j && r.j.error) || 'Could not send. Please use WhatsApp instead.';
+    }).catch(function(){ mailMsg.className = 'inv-msg bad'; mailMsg.textContent = 'Could not send. Please check your connection or use WhatsApp.'; });
   };
 
   var els = document.querySelectorAll('.rv');
