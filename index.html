@@ -673,6 +673,24 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
 .inv-msg.bad{color:#C0262D}
 @media (max-width:480px){ .inv-mail-row{flex-direction:column} .inv-mail-row input{flex:none;width:100%} .inv-mail-row .btn{justify-content:center} }
 .inv-actions [hidden]{display:none!important}
+
+/* ===== hero v8: mobile — clear video, text overlaps fade, badge visible ===== */
+@media (max-width:980px){
+  .hero-bg{z-index:0}
+  .hero-video{z-index:1;-webkit-mask-image:linear-gradient(180deg,#000 68%,transparent 100%);mask-image:linear-gradient(180deg,#000 68%,transparent 100%)}
+  .hero-grid{position:static;margin-top:-60px}
+  .hero-copy{position:relative;z-index:2}
+  .hero-art{display:block!important;position:absolute;top:14px;left:14px;width:auto;height:auto;max-width:none;margin:0;z-index:3;grid-column:auto;grid-row:auto}
+  .hero-art .ring{position:relative;left:0!important;top:0!important;width:84px;height:84px}
+  .hero-art .ring img{width:36px;height:36px}
+  .hero-art .ring text{font-size:11px}
+}
+@media (max-width:520px){ .hero-grid{margin-top:-84px} }
+@media (min-width:521px) and (max-width:980px){
+  .hero-video{width:min(100%,500px);margin:0 auto;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 12%,#000 88%,transparent 100%),linear-gradient(180deg,#000 68%,transparent 100%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 12%,#000 88%,transparent 100%),linear-gradient(180deg,#000 68%,transparent 100%);mask-composite:intersect}
+  .hero-art{left:max(14px,calc(50% - 250px))}
+}
+@media (max-width:360px){ .hero h1{font-size:34px} }
 </style>
 </head>
 <body>
