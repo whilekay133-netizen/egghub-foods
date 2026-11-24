@@ -384,7 +384,7 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
 .hero-art{position:relative;height:620px}
 .sun{position:absolute;width:440px;height:440px;border-radius:50%;background:radial-gradient(circle at 40% 35%,#FFE08A,#FFC53D 60%,#F5AE12);right:30px;top:60px;box-shadow:0 30px 80px rgba(255,197,61,.45)}
 .arch{position:absolute;right:70px;top:30px;width:360px;height:540px;border-radius:200px 200px 32px 32px;overflow:hidden;border:8px solid #fff;box-shadow:0 40px 80px rgba(60,40,140,.25);background:#C9B3EF}
-.arch img{width:100%;height:100%;object-fit:cover;object-position:50% 18%}
+.arch img,.arch video{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
 .ring{position:absolute;left:20px;top:40px;width:132px;height:132px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;box-shadow:0 16px 40px rgba(31,44,212,.35)}
 .ring svg{position:absolute;inset:0;width:100%;height:100%;animation:spin360 18s linear infinite}
 .ring text{fill:#fff;font-family:var(--sans);font-size:11px;font-weight:600}
@@ -513,6 +513,79 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
 .lb-prev{left:18px}.lb-next{right:18px}
 .lb-close:hover,.lb-arrow:hover{background:rgba(255,255,255,.28)}
 @media (max-width:600px){.lb-arrow{top:auto;bottom:24px;transform:none}.lb-prev{left:calc(50% - 62px)}.lb-next{right:calc(50% - 62px)}}
+
+/* ===== ribbons ===== */
+.ribbons{position:relative;height:150px;margin-top:8px;overflow:hidden}
+.rb{position:absolute;left:-5%;right:-5%;top:50%;overflow:hidden;white-space:nowrap}
+.rb-front{background:var(--blue);transform:translateY(-50%) rotate(-2.2deg);box-shadow:0 18px 40px rgba(31,44,212,.28);z-index:2;padding:18px 0}
+.rb-back{background:var(--yolk);transform:translateY(-50%) rotate(2.2deg);z-index:1;padding:12px 0}
+.rb-track{display:inline-flex;align-items:center;animation:rbmove 38s linear infinite}
+.rb-track.rev{animation-direction:reverse;animation-duration:46s}
+@keyframes rbmove{to{transform:translateX(-33.333%)}}
+.rb-item{display:inline-flex;align-items:center;gap:12px;color:#fff;font-size:20px;font-weight:500;letter-spacing:-.01em;padding:0 34px;position:relative}
+.rb-item svg{width:34px;height:34px;padding:7px;border-radius:50%;background:rgba(255,255,255,.14);color:var(--yolk);flex:none}
+.rb-item::after{content:"";position:absolute;right:-4px;width:8px;height:10px;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;background:var(--yolk);opacity:.9}
+.rb-word{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--ink);padding:0 26px;position:relative}
+.rb-word::after{content:"✦";position:absolute;right:-6px;font-style:normal;font-size:12px;color:var(--blue)}
+@media (max-width:600px){.ribbons{height:112px}.rb-item{font-size:16px;padding:0 22px}.rb-item svg{width:28px;height:28px;padding:6px}.rb-front{padding:13px 0}.rb-word{font-size:18px}.rb-back{padding:9px 0}}
+
+/* ===== gallery v3: editorial grid ===== */
+.gallery-sec{padding:96px 0 88px;background:linear-gradient(180deg,#fff 0%,#F7F4FD 30%,#F7F4FD 80%,#fff 100%);overflow:visible}
+.gl-head{display:grid;grid-template-columns:1.1fr .9fr;gap:32px;align-items:end}
+.gl-meta{display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.gl-meta p{font-size:17px;color:var(--muted);max-width:420px}
+.gl-meta .btn{height:46px;padding:0 20px;font-size:14px}
+.ed-grid{list-style:none;margin:48px 0 0;padding:0;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-rows:118px;gap:16px}
+.ed{min-width:0}
+.gv{grid-column:1/span 5;grid-row:span 5}
+.gp{grid-column:6/span 4;grid-row:span 3}
+.gp2{grid-column:10/span 3;grid-row:span 3}
+.gw{grid-column:6/span 7;grid-row:span 2}
+.gs1{grid-column:1/span 6;grid-row:span 3}
+.gs2{grid-column:7/span 6;grid-row:span 3}
+.ed .gbtn{position:relative;display:block;width:100%;height:100%;padding:0;border:0;border-radius:22px;overflow:hidden;cursor:zoom-in;background:#E9E2F7;font-family:var(--sans);text-align:left;isolation:isolate}
+.ed .gbtn img,.ed .gbtn video{width:100%;height:100%;object-fit:cover;object-position:50% 30%;transition:transform 1.2s cubic-bezier(.2,.7,.2,1),filter .6s}
+.gp .gbtn img,.gp2 .gbtn img{object-position:50% 20%}
+.ed .gbtn::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,17,38,.0) 40%,rgba(13,17,38,.78) 100%);z-index:0;transition:opacity .4s}
+.ed .gbtn:hover img,.ed .gbtn:hover video{transform:scale(1.05)}
+.ed-num{position:absolute;z-index:1;top:18px;right:20px;font-family:var(--serif);font-style:italic;font-size:22px;color:rgba(255,255,255,.85)}
+.ed-tag{position:absolute;z-index:1;top:16px;left:16px;display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.92);color:var(--ink);font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:6px 11px;border-radius:999px}
+.ed-tag i{width:7px;height:7px;border-radius:50%;background:#EF4444;animation:ping 2s infinite}
+.ed-cap{position:absolute;z-index:1;left:22px;right:70px;bottom:20px;color:#fff;transform:translateY(6px);transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.ed-cap b{display:block;font-size:20px;font-weight:600;letter-spacing:-.015em;line-height:1.2}
+.ed-cap small{display:block;font-size:13px;opacity:0;margin-top:4px;transition:opacity .4s}
+.ed .gbtn:hover .ed-cap,.ed .gbtn:focus-visible .ed-cap{transform:none}
+.ed .gbtn:hover .ed-cap small,.ed .gbtn:focus-visible .ed-cap small{opacity:.85}
+.ed-view{position:absolute;z-index:1;right:18px;bottom:18px;width:40px;height:40px;border-radius:50%;background:#fff;color:var(--ink);display:flex;align-items:center;justify-content:center;transform:scale(.6);opacity:0;transition:transform .35s,opacity .35s}
+.ed-view svg{width:16px;height:16px}
+.ed .gbtn:hover .ed-view,.ed .gbtn:focus-visible .ed-view{transform:none;opacity:1}
+.gv .ed-cap b{font-size:26px}
+@media (hover:none){.ed-cap{transform:none}.ed-cap small{opacity:.85}.ed-view{opacity:1;transform:none;width:34px;height:34px}}
+.g-strip{margin-top:24px}
+@media (max-width:900px){
+  .gl-head{grid-template-columns:1fr;gap:16px}
+  .ed-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:150px;gap:12px;margin-top:32px}
+  .gv{grid-column:1/-1;grid-row:span 3}
+  .gp,.gp2{grid-column:span 1;grid-row:span 2}
+  .gw{grid-column:1/-1;grid-row:span 2}
+  .gs1,.gs2{grid-column:span 1;grid-row:span 2}
+  .ed-cap{left:16px;right:52px;bottom:14px}.ed-cap b{font-size:16px}.gv .ed-cap b{font-size:20px}
+  .ed-num{font-size:18px;top:12px;right:14px}
+  .ed .gbtn{border-radius:18px}
+}
+@media (max-width:420px){.ed-cap small{display:none}.ed-tag{font-size:10px;padding:5px 9px}}
+/* lightbox v2 */
+.lightbox[open]{display:grid;grid-template-rows:auto 1fr auto;align-items:center;justify-items:center;padding:16px 16px 20px;box-sizing:border-box}
+.lb-top{width:100%;display:flex;justify-content:space-between;align-items:center;color:#fff;font-size:14px;font-variant-numeric:tabular-nums;max-width:1100px}
+.lb-close{position:static}
+.lightbox figure{grid-row:2}
+.lightbox img,.lightbox video{max-height:68vh}
+.lb-thumbs{display:flex;gap:8px;overflow-x:auto;max-width:100%;padding:4px;scrollbar-width:none}
+.lb-thumbs::-webkit-scrollbar{display:none}
+.lb-thumbs button{flex:none;width:58px;height:58px;border-radius:12px;overflow:hidden;border:2px solid transparent;padding:0;background:#222;cursor:pointer;opacity:.55;transition:opacity .2s,border-color .2s}
+.lb-thumbs button[aria-current=true]{opacity:1;border-color:var(--yolk)}
+.lb-thumbs img{width:100%;height:100%;object-fit:cover}
+@media (max-width:600px){.lb-arrow{display:none}.lb-thumbs button{width:48px;height:48px}}
 </style>
 </head>
 <body>
@@ -555,7 +628,7 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
     </div>
     <div class="hero-art rv d2">
       <div class="sun" aria-hidden="true"></div>
-      <div class="arch"><img src="images/founder-hero.jpg" alt="Egghub Foods founder holding a tray of fresh eggs and raising one egg" width="1000" height="1262"></div>
+      <div class="arch"><video src="images/founder-hero.mp4" poster="images/founder-hero-poster.jpg" autoplay muted loop playsinline preload="auto" aria-label="Egghub Foods founder smiling and presenting a fresh egg to the camera"></video></div>
       <div class="ring" aria-hidden="true">
         <svg viewBox="0 0 120 120"><defs><path id="circ" d="M60,60 m-46,0 a46,46 0 1,1 92,0 a46,46 0 1,1 -92,0"/></defs><text textLength="284" lengthAdjust="spacing"><textPath href="#circ" textLength="284" lengthAdjust="spacing">FRESH EGGS • HEALTHY LIVING • </textPath></text></svg>
         <img src="images/logo.jpg" alt="">
@@ -564,11 +637,9 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
       <div class="pick-card"><span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span><span><b>Pickup in Mowe</b><small>Lotto Bus-Stop</small></span></div>
     </div>
   </div>
-<div class="ticker" aria-hidden="true">
-    <div class="track">
-      <span><span class="serif">Fresh</span> from the farm</span><span>Big &amp; medium eggs</span><span><span class="serif">Packed</span> with care</span><span>Bulk supply</span><span>Mowe, Ogun State</span><span><span class="serif">Lowest</span> prices</span>
-      <span><span class="serif">Fresh</span> from the farm</span><span>Big &amp; medium eggs</span><span><span class="serif">Packed</span> with care</span><span>Bulk supply</span><span>Mowe, Ogun State</span><span><span class="serif">Lowest</span> prices</span>
-    </div>
+<div class="ribbons" aria-hidden="true">
+    <div class="rb rb-back"><div class="rb-track rev"><span class="rb-word">Fresh eggs</span><span class="rb-word">Healthy living</span><span class="rb-word">Every crate checked</span><span class="rb-word">Order on WhatsApp</span><span class="rb-word">Instant invoice</span><span class="rb-word">30 eggs per crate</span><span class="rb-word">Fresh eggs</span><span class="rb-word">Healthy living</span><span class="rb-word">Every crate checked</span><span class="rb-word">Order on WhatsApp</span><span class="rb-word">Instant invoice</span><span class="rb-word">30 eggs per crate</span><span class="rb-word">Fresh eggs</span><span class="rb-word">Healthy living</span><span class="rb-word">Every crate checked</span><span class="rb-word">Order on WhatsApp</span><span class="rb-word">Instant invoice</span><span class="rb-word">30 eggs per crate</span></div></div>
+    <div class="rb rb-front"><div class="rb-track"><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 4 13c0-6 7-10 16-10 0 9-4 16-10 16zM4 21c3-6 7-9 11-11"/></svg>Farm-fresh eggs</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8l-9-5-9 5v8l9 5 9-5zM3.3 7 12 12l8.7-5M12 22V12"/></svg>Packed with care</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pickup in Mowe</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8zM7 7h.01"/></svg>Honest prices</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4.4 0 7-3.4 7-8S15.6 2 12 2 5 9.6 5 14s2.6 8 7 8z"/></svg>Big &amp; medium sizes</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7zM5.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM18.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>Bulk orders welcome</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 4 13c0-6 7-10 16-10 0 9-4 16-10 16zM4 21c3-6 7-9 11-11"/></svg>Farm-fresh eggs</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8l-9-5-9 5v8l9 5 9-5zM3.3 7 12 12l8.7-5M12 22V12"/></svg>Packed with care</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pickup in Mowe</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8zM7 7h.01"/></svg>Honest prices</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4.4 0 7-3.4 7-8S15.6 2 12 2 5 9.6 5 14s2.6 8 7 8z"/></svg>Big &amp; medium sizes</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7zM5.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM18.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>Bulk orders welcome</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 20A7 7 0 0 1 4 13c0-6 7-10 16-10 0 9-4 16-10 16zM4 21c3-6 7-9 11-11"/></svg>Farm-fresh eggs</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 16V8l-9-5-9 5v8l9 5 9-5zM3.3 7 12 12l8.7-5M12 22V12"/></svg>Packed with care</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Pickup in Mowe</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L2 12V2h10l8.6 8.6a2 2 0 0 1 0 2.8zM7 7h.01"/></svg>Honest prices</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22c4.4 0 7-3.4 7-8S15.6 2 12 2 5 9.6 5 14s2.6 8 7 8z"/></svg>Big &amp; medium sizes</span><span class="rb-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 3h15v13H1zM16 8h4l3 3v5h-7zM5.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5zM18.5 21a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>Bulk orders welcome</span></div></div>
   </div>
 </section>
 
@@ -621,26 +692,20 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
       <div>
         <span class="label rv">Inside Egghub</span>
         <h2 class="h2 rv d1">From the farm <span class="serif">to your table.</span></h2>
-        <p class="lead rv d2" style="margin-top:14px">A look at our eggs, our crates and the face behind Egghub. Tap any photo to see it bigger.</p>
       </div>
-      <div class="g-nav rv d2">
-        <span class="g-count"><b id="gNow">01</b> / 07</span>
-        <button type="button" class="g-arrow" id="gPrev" aria-label="Previous photos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
-        <button type="button" class="g-arrow" id="gNext" aria-label="Next photos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+      <div class="gl-meta rv d2">
+        <p>Real photos and videos of our eggs, our crates and the face behind Egghub.</p>
+        <button type="button" class="btn btn-line" id="gOpenAll"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>View all 6</button>
       </div>
     </div>
-  </div>
-  <ul class="g-track" id="gTrack" aria-label="Egghub photo gallery">
-        <li class="gcard wide"><button type="button" class="gbtn" data-i="0" data-kind="video" data-src="images/stock.mp4" data-title="Fresh crates, ready to go" aria-label="View: Fresh crates, ready to go"><video src="images/stock.mp4" poster="images/stock-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video><span class="gtag"><i></i>In stock</span><span class="gcap"><b>Fresh crates, ready to go</b><small>Straight from the farm</small></span><span class="gzoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
-        <li class="gcard "><button type="button" class="gbtn" data-i="1" data-kind="img" data-src="images/founder-sitting.jpg" data-title="The face behind Egghub" aria-label="View: The face behind Egghub"><img src="images/founder-sitting.jpg" alt="Egghub Foods founder sitting beside fresh eggs" loading="lazy"><span class="gtag">Founder</span><span class="gcap"><b>The face behind Egghub</b><small>Fresh eggs. Healthy living.</small></span><span class="gzoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
-        <li class="gcard wide"><button type="button" class="gbtn" data-i="2" data-kind="img" data-src="images/warehouse.jpg" data-title="Our partner farm" aria-label="View: Our partner farm"><img src="images/warehouse.jpg" alt="Hundreds of egg crates stacked at the supply farm" loading="lazy"><span class="gtag">The farm</span><span class="gcap"><b>Our partner farm</b><small>Where our fresh eggs come from</small></span><span class="gzoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
-        <li class="gcard "><button type="button" class="gbtn" data-i="3" data-kind="img" data-src="images/founder-tray-head.jpg" data-title="We carry eggs with care" aria-label="View: We carry eggs with care"><img src="images/founder-tray-head.jpg" alt="Egghub Foods founder balancing an egg tray on her head" loading="lazy"><span class="gtag">Care</span><span class="gcap"><b>We carry eggs with care</b><small>Every crate handled by hand</small></span><span class="gzoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
-        <li class="gcard "><button type="button" class="gbtn" data-i="4" data-kind="img" data-src="images/stock-crates.jpg" data-title="Checked, crate by crate" aria-label="View: Checked, crate by crate"><img src="images/stock-crates.jpg" alt="Close-up of crates of brown eggs" loading="lazy"><span class="gtag">Quality</span><span class="gcap"><b>Checked, crate by crate</b><small>30 eggs in every crate</small></span><span class="gzoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
-        <li class="gcard "><button type="button" class="gbtn" data-i="5" data-kind="img" data-src="images/trays.jpg" data-title="Clean crates for every order" aria-label="View: Clean crates for every order"><img src="images/trays.jpg" alt="New egg trays wrapped and ready for packing" loading="lazy"><span class="gtag">Packing</span><span class="gcap"><b>Clean crates for every order</b><small>New trays, every time</small></span><span class="gzoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
-        <li class="gcard "><button type="button" class="gbtn" data-i="6" data-kind="img" data-src="images/founder-eggs-floor.jpg" data-title="Quality you can see" aria-label="View: Quality you can see"><img src="images/founder-eggs-floor.jpg" alt="Egghub Foods founder smiling at a crate of fresh eggs" loading="lazy"><span class="gtag">Our promise</span><span class="gcap"><b>Quality you can see</b><small>Affordable for every home</small></span><span class="gzoom" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
-  </ul>
-  <div class="wrap">
-    <div class="g-progress" aria-hidden="true"><span id="gBar"></span></div>
+    <ul class="ed-grid" id="gTrack" aria-label="Egghub photo gallery">
+      <li class="ed gv rv"><button type="button" class="gbtn" data-kind="video" data-src="images/stock.mp4" data-title="Fresh crates, ready to go" data-alt="Close-up of crates of fresh brown eggs" aria-label="Open: Fresh crates, ready to go"><video src="images/stock.mp4" poster="images/stock-poster.jpg" autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video><span class="ed-num">01</span><span class="ed-tag"><i></i>In stock</span><span class="ed-cap"><b>Fresh crates, ready to go</b><small>Straight from the farm</small></span><span class="ed-view" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
+      <li class="ed gp rv"><button type="button" class="gbtn" data-kind="img" data-src="images/founder-sitting.jpg" data-title="The face behind Egghub" data-alt="Egghub Foods founder sitting beside fresh eggs" aria-label="Open: The face behind Egghub"><img src="images/founder-sitting.jpg" alt="Egghub Foods founder sitting beside fresh eggs" loading="lazy"><span class="ed-num">02</span><span class="ed-tag">Founder</span><span class="ed-cap"><b>The face behind Egghub</b><small>Fresh eggs. Healthy living.</small></span><span class="ed-view" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
+      <li class="ed gp2 rv"><button type="button" class="gbtn" data-kind="img" data-src="images/founder-tray-head.jpg" data-title="We carry eggs with care" data-alt="Egghub Foods founder balancing an egg tray on her head" aria-label="Open: We carry eggs with care"><img src="images/founder-tray-head.jpg" alt="Egghub Foods founder balancing an egg tray on her head" loading="lazy"><span class="ed-num">03</span><span class="ed-tag">Our people</span><span class="ed-cap"><b>We carry eggs with care</b><small>Every crate handled by hand</small></span><span class="ed-view" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
+      <li class="ed gw rv"><button type="button" class="gbtn" data-kind="img" data-src="images/warehouse.jpg" data-title="Our partner farm" data-alt="Hundreds of egg crates stacked at the supply farm" aria-label="Open: Our partner farm"><img src="images/warehouse.jpg" alt="Hundreds of egg crates stacked at the supply farm" loading="lazy"><span class="ed-num">04</span><span class="ed-tag">The farm</span><span class="ed-cap"><b>Our partner farm</b><small>Where our fresh eggs come from</small></span><span class="ed-view" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
+      <li class="ed gs1 rv"><button type="button" class="gbtn" data-kind="img" data-src="images/stock-crates.jpg" data-title="Checked, crate by crate" data-alt="Crates of brown eggs stacked and ready" aria-label="Open: Checked, crate by crate"><img src="images/stock-crates.jpg" alt="Crates of brown eggs stacked and ready" loading="lazy"><span class="ed-num">05</span><span class="ed-tag">Quality</span><span class="ed-cap"><b>Checked, crate by crate</b><small>30 eggs in every crate</small></span><span class="ed-view" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
+      <li class="ed gs2 rv"><button type="button" class="gbtn" data-kind="img" data-src="images/trays.jpg" data-title="Clean crates for every order" data-alt="New egg trays wrapped and ready for packing" aria-label="Open: Clean crates for every order"><img src="images/trays.jpg" alt="New egg trays wrapped and ready for packing" loading="lazy"><span class="ed-num">06</span><span class="ed-tag">Packing</span><span class="ed-cap"><b>Clean crates for every order</b><small>New trays, every time</small></span><span class="ed-view" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg></span></button></li>
+    </ul>
     <div class="g-strip rv">
       <div class="gs-stat"><strong>30</strong><span>eggs in every crate</span></div>
       <p class="gs-quote">“Quality eggs should be affordable for every household.”</p>
@@ -649,10 +714,11 @@ footer{background:var(--ink);color:#fff;padding:72px 0 32px}
   </div>
 </section>
 <dialog class="lightbox" id="lightbox" aria-label="Photo viewer">
-  <button type="button" class="lb-close" id="lbClose" aria-label="Close">×</button>
-  <button type="button" class="lb-arrow lb-prev" id="lbPrev" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
+  <div class="lb-top"><span id="lbCount"></span><button type="button" class="lb-close" id="lbClose" aria-label="Close">×</button></div>
+  <button type="button" class="lb-arrow lb-prev" id="lbPrev" aria-label="Previous"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6"/></svg></button>
   <figure><div id="lbMedia"></div><figcaption id="lbCap"></figcaption></figure>
-  <button type="button" class="lb-arrow lb-next" id="lbNext" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+  <button type="button" class="lb-arrow lb-next" id="lbNext" aria-label="Next"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18l6-6-6-6"/></svg></button>
+  <div class="lb-thumbs" id="lbThumbs"></div>
 </dialog>
 
 <section class="section" id="story" style="padding-top:40px">
