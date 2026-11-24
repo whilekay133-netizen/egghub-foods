@@ -41,13 +41,28 @@ button.ghost{background:transparent;color:var(--muted);height:auto;margin-top:14
 .chip strong{display:block;color:var(--ink);font-size:18px;margin-top:2px}.chip.b{background:var(--blue);border-color:var(--blue);color:#D3D7FF}.chip.b strong{color:#fff}
 @media (max-width:420px){.row{grid-template-columns:1fr}.card{padding:22px}}
 [hidden]{display:none!important}
+.chg{margin-top:18px;font-size:14px}.chg summary{cursor:pointer;color:var(--blue);font-weight:600}
+.loading{text-align:center;color:var(--muted);padding:40px 0}
 a.back{display:block;text-align:center;margin-top:18px;color:var(--muted);font-size:14px}
 </style>
 </head>
 <body>
 <header><a class="brand" href="/"><img src="images/logo.jpg" alt=""><b style="font-weight:600">Egg<span>hub</span> Foods</b></a><span class="tag">Admin</span></header>
 <main>
-  <section class="card" id="loginCard">
+  <p class="loading" id="loading">Loading…</p>
+  <section class="card" id="setupCard" hidden>
+    <h1>Create your admin password</h1>
+    <p class="sub">First time here. Choose a password you will remember. You will use it every time you change prices.</p>
+    <form id="setupForm" autocomplete="on">
+      <input type="text" name="username" value="egghub-admin" autocomplete="username" hidden>
+      <div class="field"><label for="np1">New password <span style="font-weight:400;color:var(--muted)">(at least 8 characters)</span></label><input id="np1" type="password" autocomplete="new-password" minlength="8" maxlength="200" required></div>
+      <div class="field"><label for="np2">Type it again</label><input id="np2" type="password" autocomplete="new-password" minlength="8" maxlength="200" required></div>
+      <button id="setupBtn" type="submit">Create password</button>
+      <p class="msg" id="setupMsg" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <section class="card" id="loginCard" hidden>
     <h1>Owner sign in</h1>
     <p class="sub">Enter your admin password to update egg prices on the website.</p>
     <form id="loginForm" autocomplete="on">
@@ -72,10 +87,13 @@ a.back{display:block;text-align:center;margin-top:18px;color:var(--muted);font-s
       <p class="msg" id="saveMsg" role="status" aria-live="polite"></p>
     </form>
     <div class="status">
-      <div><span class="dot" id="dStore"></span><b>Price storage</b> <span id="tStore"></span></div>
       <div><span class="dot" id="dMail"></span><b>Invoice emails</b> <span id="tMail"></span></div>
       <div id="tUpd"></div>
     </div>
+    <details class="chg"><summary>Change password</summary>
+      <form id="chgForm"><div class="field" style="margin-top:12px"><label for="cp">New password</label><input id="cp" type="password" autocomplete="new-password" minlength="8" maxlength="200" required></div>
+      <button id="chgBtn" type="submit">Update password</button><p class="msg" id="chgMsg" role="status" aria-live="polite"></p></form>
+    </details>
     <button class="ghost" id="logout" type="button">Sign out</button>
   </section>
   <a class="back" href="/">← Back to website</a>

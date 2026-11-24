@@ -9,9 +9,8 @@
   function msg(el, text, cls){ el.textContent = text; el.className = 'msg' + (cls ? ' ' + cls : ''); }
   function preview(){ $('pvBig').textContent = ngn($('big').value); $('pvMed').textContent = ngn($('medium').value); }
   function show(d){
-    $('loginCard').hidden = true; $('editCard').hidden = false;
+    $('loginCard').hidden = true; $('setupCard').hidden = true; $('editCard').hidden = false;
     $('big').value = d.prices.big; $('medium').value = d.prices.medium; preview();
-    $('dStore').className = 'dot' + (d.storage ? ' on' : ''); $('tStore').textContent = d.storage ? '— connected' : '— not connected yet (prices cannot be saved)';
     $('dMail').className = 'dot' + (d.email ? ' on' : ''); $('tMail').textContent = d.email ? '— on' : '— off (customers use their own email app)';
     $('tUpd').textContent = d.prices.updatedAt ? 'Last changed: ' + new Date(d.prices.updatedAt).toLocaleString('en-GB', { dateStyle: 'medium', timeStyle: 'short' }) : 'Showing the default prices.';
     $('big').focus();
@@ -39,6 +38,31 @@
       else msg($('saveMsg'), d.error || 'Could not save.', 'bad');
     }).catch(function(){ msg($('saveMsg'), 'Network error. Prices were not saved.', 'bad'); })
       .then(function(){ b.disabled = false; });
+  });
+  call({ action: 'status' }).then(function(d){
+    $('loading').hidden = true;
+    if(d.setup) $('setupCard').hidden = false;
+    else if(d.status === 200) $('loginCard').hidden = false;
+    else { $('loginCard').hidden = false; msg($('loginMsg'), d.error || 'Admin is not available right now.', 'bad'); }
+  }).catch(function(){ $('loading').textContent = 'Network error. Refresh the page.'; });
+  $('setupForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var a = $('np1').value, b2 = $('np2').value;
+    if(a.length < 8){ msg($('setupMsg'), 'Use at least 8 characters.', 'bad'); return; }
+    if(a !== b2){ msg($('setupMsg'), 'The two passwords do not match.', 'bad'); return; }
+    var b = $('setupBtn'); b.disabled = true;
+    call({ action: 'setup', password: a }).then(function(d){
+      if(d.ok){ pass = a; $('np1').value = $('np2').value = ''; show(d); msg($('saveMsg'), 'Password created. Keep it safe.', 'ok'); }
+      else msg($('setupMsg'), d.error || 'Could not create the password.', 'bad');
+    }).catch(function(){ msg($('setupMsg'), 'Network error.', 'bad'); }).then(function(){ b.disabled = false; });
+  });
+  $('chgForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var np = $('cp').value, b = $('chgBtn'); if(np.length < 8){ msg($('chgMsg'), 'Use at least 8 characters.', 'bad'); return; }
+    b.disabled = true;
+    call({ action: 'change', password: pass, newPassword: np }).then(function(d){
+      if(d.ok){ pass = np; $('cp').value = ''; msg($('chgMsg'), 'Password changed.', 'ok'); } else msg($('chgMsg'), d.error || 'Could not change it.', 'bad');
+    }).catch(function(){ msg($('chgMsg'), 'Network error.', 'bad'); }).then(function(){ b.disabled = false; });
   });
   $('logout').onclick = function(){ pass = null; location.reload(); };
 })();
