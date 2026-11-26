@@ -9,11 +9,12 @@ const ngn = (n) => '₦' + Number(n).toLocaleString('en-NG');
 export default async function handler(req, res) {
   if (req.method !== 'POST') { res.setHeader('Allow', 'POST'); return json(res, 405, { error: 'Method not allowed' }); }
   if (!sameOrigin(req)) return json(res, 403, { error: 'Forbidden' });
+  if (!String(req.headers['content-type'] || '').startsWith('application/json')) return json(res, 415, { error: 'Unsupported' });
   if (!process.env.GMAIL_APP_PASSWORD) return json(res, 503, { error: 'Email sending is not set up yet.' });
   const ip = ipOf(req);
   if (limited('mail:' + ip, 4, 10 * 60 * 1000)) return json(res, 429, { error: 'Too many invoices sent. Please wait a few minutes or use WhatsApp.' });
 
-  const b = typeof req.body === 'object' && req.body ? req.body : {};
+  const b = req.body && typeof req.body === 'object' && !Array.isArray(req.body) ? req.body : {};
   const no = clean(b.no, 20), name = clean(b.name, 60), phone = clean(b.phone, 20).replace(/[^0-9+ ()-]/g, '');
   const email = clean(b.email, 120);
   const size = b.size === 'big' ? 'big' : b.size === 'medium' ? 'medium' : null;

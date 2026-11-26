@@ -2,7 +2,7 @@
   var WA = '2348069133358';
   var waUrl = function(t){ return 'https://wa.me/' + WA + '?text=' + encodeURIComponent(t); };
   window.EGG_PRICES = { big: 5200, medium: 4800 }; // fallback if the price sheet can't be reached
-  // Prices are set by the owner on /admin and served by /api/prices
+  // Prices are set by the owner on the private owner page and served by /api/prices
   function applyPrices(){
     var P = window.EGG_PRICES;
     document.querySelectorAll('[data-p]').forEach(function(el){ el.textContent = P[el.dataset.p].toLocaleString('en-NG'); });
